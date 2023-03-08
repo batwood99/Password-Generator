@@ -7,6 +7,14 @@ function writePassword() {
     while (passwordlength < 8 || passwordlength > 128) {
         passwordlength = prompt("Invalid. Enter a value between 8 and 128.");
     }
+    var includelowercase = confirm("Do you want any lowercase characters?");
+    var includeuppercase = confirm("Do you want any uppercase characters?");
+    var includenumbers = confirm("Do you want any numbers?");
+    var includespecial = confirm("Do you want any special characters (!,$,*,&,?,etc.)?");
+
+
+
+
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
