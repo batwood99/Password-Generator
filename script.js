@@ -20,19 +20,21 @@ function writePassword() {
         var includespecial = confirm("Do you want any special characters (!,$,*,&,?,etc.)?");
     }
 
-
-  var password = generatePassword();
+  var password = generatePassword(passwordlength, includelowercase, includeuppercase, includenumbers, includespecial);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
 }
 
-// Add event listener to generate button
+
 generateBtn.addEventListener("click", writePassword);
 
-//Add function to generate the password 
+
 function generatePassword(length, lowercase, uppercase, numbers,special) {
+    var characters = "";
+    var password = "";
+
     if (lowercase) {
         characters += "abcdefghijklmnopqrstuvwxyz";
     }
@@ -43,8 +45,12 @@ function generatePassword(length, lowercase, uppercase, numbers,special) {
         characters += "0123456789";
     }
     if (special) {
-        characters += "!#$%&'()*+,-.{}[]^/";
+        characters += "~`! @#$%^&*()_-+={[}]|:;'<,>.?/";
     }
-    var charset = "";
-    var password = "";
+
+    for (var x = 0; x < length; x++) {
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+
+    return password;
 }
